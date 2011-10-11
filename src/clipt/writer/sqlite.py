@@ -12,13 +12,11 @@ class SqliteWriter(writer.Writer):
         (key text, value text)''')
 
     def write(self, key, value):
-        self._db.execute('''REPLACE INTO clips (key, value) 
+        self._db.execute('''REPLACE INTO clips (key, value)
         VALUES (?, ?)''', (key, value))
 
     def read(self, key):
-        sql = "SELECT value FROM clips WHERE key = ?" 
+        sql = "SELECT value FROM clips WHERE key = ?"
         result = self._db.execute(sql, (key,))
 
         return result.fetchone()[0]
-
-

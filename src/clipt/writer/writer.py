@@ -2,6 +2,9 @@ class Writer:
     # Abstract class
 
     def write(key, value):
-        # Abstract method
-        pass
+        pass # Abstract method
+
+
+    def read(key):
+        pass # Abstract method
 
