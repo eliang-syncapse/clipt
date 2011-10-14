@@ -9,7 +9,16 @@ Use this for:
 
 Requirements:
 	* Python 3 (along with 2to3)
+	* Nose (and coverage plugin) to run unittests and code coverage
 
 Notes:
 	* The local storage writer uses sqlite
 	* Thrift interface for remote storage (not implemented)
+	* Thrift doesn't support Python 3 so 2to3 is required (Makefile takes care of this)
+
+Configuration:
+	* Standard ini-file configuration, ~/.clipt/config
+	* [main] section:
+		* 'storage' => Which storage engine to use : {local, remote}
+	* [local] section:
+		* 'database' => Location of sqlite database : defaults to ~/.clipt/data
