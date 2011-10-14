@@ -6,6 +6,7 @@ usage: clipt.py [-h] {read,write,list,delete} [key] [value]
 Description
 -----------
 Save and retrieve text snippets from the command line. I was inspired by [Boom](https://github.com/holman/boom)
+and want to learn Python and Thrift.
 
 __Uses__
 
