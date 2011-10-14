@@ -32,3 +32,10 @@ __Configuration__
     * 'storage' => Which storage engine to use : {local, remote}
 * [local] section:
     * 'database' => Location of sqlite database : defaults to ~/.clipt/data
+
+__TODO__
+
+* Remote storage implementation
+* Local sqllite implementation
+* Command syntax
+* Tab completion 
