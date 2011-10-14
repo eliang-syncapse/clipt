@@ -1,9 +1,6 @@
 import sqlite3
 
-from clipt.writer import writer
-
-dir(writer)
-class SqliteWriter(writer.Writer):
+class SqliteWriter:
 
     def __init__(self, db_path):
         self._db = sqlite3.connect(db_path)
@@ -12,11 +9,18 @@ class SqliteWriter(writer.Writer):
         (key text, value text)''')
 
     def write(self, key, value):
-        self._db.execute('''REPLACE INTO clips (key, value)
-        VALUES (?, ?)''', (key, value))
+        sql = 'INSERT INTO clips (key, value) VALUES (?, ?)'
+        self._db.execute(sql, (key, value))
 
     def read(self, key):
         sql = "SELECT value FROM clips WHERE key = ?"
         result = self._db.execute(sql, (key,))
 
-        return result.fetchone()[0]
+        result = result.fetchone()
+        if result != None:
+            return result[0]
+
+    def list(self):
+        sql = "SELECT key FROM clips"
+        result = self._db.execute(sql)
+        return result.fetchall()
